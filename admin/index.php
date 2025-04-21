@@ -15,9 +15,9 @@
 
 <body>
     <div class="header">
-        <h4>Admin Panel</h4>
+        <h5 style="color: white;">Admin Panel</h5>
         <div style="display: flex; gap: 15px; align-items: center;">
-            <h6>Home</h6>
+            <h6 style="color: white;">Home</h6>
 
             <!-- Bell Dropdown -->
             <div class="dropdown">
@@ -54,6 +54,23 @@
                     <li><a class="dropdown-item" href="#">Logout</a></li>
                 </ul>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Sidebar (col-4) -->
+        <div class="col-lg-2">
+            <ul class="nav flex-column">
+                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-bell"></i>Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-chart-simple"></i>Reports</a></li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-gear"></i>Settings</a></li>
+            </ul>
+        </div>
+
+        <!-- Dashboard (col-8) -->
+        <div class="col-lg-10 bg-light">
+            <h2>Dashboard</h2>
+            <p>Welcome to the dashboard! Here's your main content area.</p>
+            <!-- Add cards, charts, tables, etc. here -->
         </div>
     </div>
 
