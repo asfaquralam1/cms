@@ -16,21 +16,47 @@
 <body>
     <div class="header">
         <h4>Admin Panel</h4>
-        <div style="display: flex;">
+        <div style="display: flex; gap: 15px; align-items: center;">
             <h6>Home</h6>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-user"></i> Jone Smith
-                </button>
 
+            <!-- Bell Dropdown -->
+            <div class="dropdown">
+                <a class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white; text-decoration: none;">
+                    <i class="fas fa-bell"></i>
+                </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><a class="dropdown-item" href="#">Notification 1</a></li>
+                    <li><a class="dropdown-item" href="#">Notification 2</a></li>
+                    <li><a class="dropdown-item" href="#">View All</a></li>
+                </ul>
+            </div>
+
+            <!-- Envelope Dropdown -->
+            <div class="dropdown">
+                <a class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white; text-decoration: none;">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Message 1</a></li>
+                    <li><a class="dropdown-item" href="#">Message 2</a></li>
+                    <li><a class="dropdown-item" href="#">See All Messages</a></li>
+                </ul>
+            </div>
+
+            <!-- User Dropdown -->
+            <div class="dropdown">
+                <a class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white; text-decoration: none;">
+                    <i class="fas fa-user"></i> Jone Smith
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="#">Logout</a></li>
                 </ul>
             </div>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
