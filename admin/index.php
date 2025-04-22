@@ -59,11 +59,20 @@
     <div class="row">
         <!-- Sidebar (col-4) -->
         <div class="col-lg-2">
-            <ul class="nav flex-column">
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-bell"></i>Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-chart-simple"></i>Reports</a></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-gear"></i>Settings</a></li>
-            </ul>
+            <div>
+                <li><a href="#"><i class="fas fa-dashboard"></i>Dashboard</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-chart-simple"></i>Posts
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">View All Posts</a></li>
+                        <li><a class="dropdown-item" href="#">Add Posts</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><i class="fas fa-gear"></i>Settings</a></li>
+            </div>
         </div>
 
         <!-- Dashboard (col-8) -->
