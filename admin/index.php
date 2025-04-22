@@ -59,7 +59,7 @@
     <div class="row">
         <!-- Sidebar (col-4) -->
         <div class="col-lg-2">
-            <div>
+            <div class="sidebar">
                 <li><a href="#"><i class="fas fa-dashboard"></i>Dashboard</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
