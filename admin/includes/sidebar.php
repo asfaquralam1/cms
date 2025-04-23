@@ -1,0 +1,15 @@
+<div class="sidebar">
+    <li><a href="#"><i class="fas fa-dashboard"></i>Dashboard</a></li>
+    <li class="dropdown">
+        <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-chart-simple"></i>Posts
+        </a>
+
+        <ul class="dropdown-menu">
+            <li><a href="#">View All Posts</a></li>
+            <li><a href="#">Add Posts</a></li>
+        </ul>
+    </li>
+    <li><a href="./categories.php"><i class="fas fa-gear"></i>Categoris</a></li>
+    <li><a href="#"><i class="fas fa-file"></i>Commnets</a></li>
+</div>

@@ -1,16 +1,69 @@
-body{
+body {
     background-color: black;
     font-family: Arial, sans-serif;
 }
-.header{
+
+.header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    background-color: #343a40;
+    padding: 10px 20px;
 }
-.sidebar li {
+
+.admin_logo {
+    color: white;
+    margin: 0;
+}
+
+.right_menu {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    display: flex;
+    align-items: center;
+}
+
+.right_menu>a {
+    color: white;
+    margin: 0;
+    text-decoration: none;
+}
+
+.dropdown>a {
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar>li {
     padding: 15px;
     list-style: none;
 }
-.sidebar li a {
+
+.sidebar>li>a {
     color: white;
     text-decoration: none;
+}
+
+.sidebar>li>a i {
+    margin-right: 10px;
+}
+
+.dropdown-menu>li {
+    padding: 5px 10px;
+    list-style: none;
+}
+
+.dropdown-menu>li a {
+    color: black;
+    text-decoration: none;
+}
+
+.dropdown-menu>li>a i {
+    margin-right: 10px;
+}
+
+.divider {
+    border-bottom: 1px solid #e3e3e3;
+    margin: 10px 0;
 }
