@@ -1,3 +1,4 @@
+<?php include "../includes/connection.php" ?>
 <div class="header">
     <h5 class="admin_logo">CMS Admin</h5>
 
