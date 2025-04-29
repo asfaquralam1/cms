@@ -1,3 +1,5 @@
+<?php include "../includes/connection.php" ?>
+<?php include "./functions.php" ?>
 <?php ob_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,5 +20,5 @@
 
 <body>
     <header>
-        <?php include "includes/navigation.php" ?>
+        <?php include "../admin/includes/admin_navigation.php" ?>
     </header>

@@ -1,10 +1,10 @@
-<?php include "includes/header.php" ?>
+<?php include '../admin/includes/admin_header.php' ?>
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar (col-4) -->
             <div class="col-lg-2">
-                <?php include "includes/sidebar.php" ?>
+                <?php include "../admin/includes/admin_sidebar.php" ?>
             </div>
 
             <!-- Dashboard (col-8) -->
@@ -16,4 +16,4 @@
         </div>
     </div>
 </div>
-<?php include "includes/footer.php" ?>
+<?php include "../admin/includes/admin_footer.php" ?>
