@@ -26,12 +26,12 @@
                       ?>
                     </div>
                     <div class="col-lg-6">
-                        <table>
+                        <table class="table">
                             <thead>
                                 <tr>
                                     <th>Id</th>
                                     <th>Category Title</th>
-                                    <th>Action</th>
+                                    <th colspan="2">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
