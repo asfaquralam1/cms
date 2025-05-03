@@ -5,15 +5,10 @@
             <?php include "../admin/includes/admin_sidebar.php" ?>
         </div>
         <div class="col-lg-10">
-            <h1 class="page-header">Welcome to admin</h1>
-            <small>Author</small>
+            <h1 class="page-header">Welcome to admin <small>Author</small></h1>
             <div class="row">
                 <div class="col-lg-12">
                 <?php
-                    //   if(isset($_GET['edit'])) {
-                    //       $post_id = $_GET['edit'];
-                    //       include "../admin/update_posts.php";
-                    //   }
                     if(isset($_GET['source'])) {
                         $source = $_GET['source'];
                     } else {
