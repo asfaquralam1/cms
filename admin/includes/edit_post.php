@@ -2,8 +2,8 @@
     <div class="form-group">
         <label for="">Edit Post</label>
         <?php
-        if (isset($_GET['edit'])) {
-            $post_id = $_GET['edit'];
+        if (isset($_GET['p_id'])) {
+            $post_id = $_GET['p_id'];
             $query = "SELECT * from posts WHERE post_id = $post_id";
             $selected_post_id = mysqli_query($conn, $query);
             while ($row = mysqli_fetch_assoc($selected_post_id)) {

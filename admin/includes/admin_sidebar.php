@@ -7,7 +7,7 @@
 
         <ul class="dropdown-menu">
             <li><a href="./posts.php">View All Posts</a></li>
-            <li><a href="#">Add Posts</a></li>
+            <li><a href="posts.php?source=add_post">Add Posts</a></li>
         </ul>
     </li>
     <li><a href="./categories.php"><i class="fas fa-gear"></i>Categoris</a></li>
