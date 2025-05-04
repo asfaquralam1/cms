@@ -29,7 +29,18 @@
             $post_image = $_FILES['image']['name'];
             $post_image_temp = $_FILES['image']['tmp_name'];
             move_uploaded_file($post_image_temp, "../images/$post_image");
-            $query = "UPDATE posts SET post_title = '{$the_post_title}', post_author = '{$the_post_author}',post_category_id = {$the_post_category},post_image = {$post_image} post_content = '{$the_post_content}' WHERE post_id = '{$post_id}'";
+
+            $query = "UPDATE posts SET post_title";
+            $query.= "post_title = '{$the_post_title}'";
+            $query.= "post_category_id = '{$the_post_category}'";
+            $query.= "post_date = now(), ";
+            $query.= "post_author = '{$the_post_author}'";
+            $query.= "post_status = '{$post_status}'";
+            $query.= "post_tags = '{$post_tags}'";
+            $query.= "post_content = '{$the_post_content}'";
+            $query.= "post_image = '{$post_image}'";
+            $query.= "WHERE post_id = '{$post_id}'";
+
             $update_query = mysqli_query($conn, $query);
             if(!$update_query){
                 die("Query failed". mysqli_error($conn));
