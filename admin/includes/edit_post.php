@@ -1,12 +1,12 @@
 <form action="" method="post">
-<h6>Edit Post</h6>
         <?php
         if (isset($_GET['p_id'])) {
-            $post_id = $_GET['p_id'];
-            $query = "SELECT * from posts WHERE post_id = $post_id";
+            $the_post_id = $_GET['p_id'];
+        }
+            $query = "SELECT * from posts WHERE post_id = $the_post_id";
             $selected_post_by_id = mysqli_query($conn, $query);
             while ($row = mysqli_fetch_assoc($selected_post_by_id)) {
-                $post_id = $row['post_id'];
+                $the_post_id = $row['post_id'];
                 $post_category_id = $row['post_category_id'];
                 $post_title = $row['post_title'];
                 $post_author = $row['post_author'];
@@ -14,52 +14,62 @@
                 $post_image = $row['post_image'];
                 $post_content = $row['post_content'];
                 $post_tags = $row['post_tags'];
-                $post_count = $row['post_count'];
                 $post_status = $row['post_status'];
 
-        ?>
-
-         <!-- Update Query -->
-         <?php
-        if (isset($_POST['update_post'])) {
-            $the_post_title = $_POST['post_title'];
-            $the_post_author = $_POST['post_author'];
-            $the_post_content = $_POST['post_content'];
-            $the_post_category = $_POST['post_category_id'];
-            $post_image = $_FILES['image']['name'];
-            $post_image_temp = $_FILES['image']['tmp_name'];
-            move_uploaded_file($post_image_temp, "../images/$post_image");
-
-            $query = "UPDATE posts SET post_title";
-            $query.= "post_title = '{$the_post_title}'";
-            $query.= "post_category_id = '{$the_post_category}'";
-            $query.= "post_date = now(), ";
-            $query.= "post_author = '{$the_post_author}'";
-            $query.= "post_status = '{$post_status}'";
-            $query.= "post_tags = '{$post_tags}'";
-            $query.= "post_content = '{$the_post_content}'";
-            $query.= "post_image = '{$post_image}'";
-            $query.= "WHERE post_id = '{$post_id}'";
-
-            $update_query = mysqli_query($conn, $query);
-            if(!$update_query){
-                die("Query failed". mysqli_error($conn));
             }
-            header("Location: posts.php");
-        }
+                // <!-- Update Query -->
+                if (isset($_POST['update_post'])) {
+                  $the_post_title = $_POST['post_title'];
+                  $the_post_author = $_POST['post_author'];
+                  $the_post_category = $_POST['post_category_id'];
+                  // $the_post_image = $_FILES['image']['name'];
+                  // $post_image_temp = $_FILES['image']['tmp_name'];
+                  $the_post_content = $_POST['post_content']; 
+                  $post_tags = $_POST['post_tags'];
+                  // move_uploaded_file($post_image_temp, "../images/$the_post_image");
+      
+                  // if (empty($post_image)) {
+                  //     $query = "SELECT * from posts WHERE post_id = $the_post_id";
+                  //     $select_image = mysqli_query($conn, $query);
+                  //     while ($row = mysqli_fetch_array($select_image)) {
+                  //         $post_image = $row['post_image'];
+                  //     }
+                  // }
+      
+      
+                  $query = "UPDATE posts SET";
+                  $query.= "post_title = '{$the_post_title}'";  
+                  $query.= "post_category_id = '{$the_post_category}'";
+                  // $query.= "post_date = now(), ";
+                  $query.= "post_author = '{$the_post_author}'";
+                  // $query.= "post_status = '{$post_status}'";
+                  // $query.= "post_tags = '{$post_tags}'";
+                  // $query.= "post_content = '{$the_post_content}'";
+                  // $query.= "post_image = '{$the_post_image}'";
+                  $query.= "WHERE post_id = '{$the_post_id}'";
+      
+                  $update_query = mysqli_query($conn, $query);
+      
+                  confirmQuery($update_query);
+                  header("Location: posts.php");
+              }
+
         ?>
 
+       
 
-        <div class="form-group">
+
+        <div class="form-group mb-2">
           <label for="">Post title</label>
           <input value="<?php if (isset($post_title)) {echo $post_title;} ?>" type="text" class="form-control" name="post_title">
         </div>
-        <div class="form-group">
+        <div class="form-group mb-2">
           <label for="">Post Author</label>
           <input value="<?php if (isset($post_author)) {echo $post_author;} ?>" type="text" class="form-control" name="post_author">
         </div>
-        <div class="form-group">
-          <select name="post_category_id" id="">
+        <div class="form-group mb-2">
+          <label for="">Select Category</label>
+          <select class="form-select" name="post_category_id" id="">
           <?php
            $category_query = "SELECT * from categories";
            $select_categories = mysqli_query($conn, $category_query);
@@ -72,20 +82,18 @@
           ?>
           </select>
         </div>
-        <div class="form-group">
-          <img width="100" src="../images/<?php echo $post_image; ?>" name="post_image" alt="">
+        <div class="form-group mb-2">
+          <img width="100" src="../images/<?php echo $post_image; ?>" alt="">
           <input type="file" name="image">
         </div>
-        <div class="form-group">
+        <div class="form-group mb-2">
           <label for="">Post Content</label>
           <input value="<?php if (isset($post_content)) {echo $post_content;} ?>" type="text" class="form-control" name="post_content">
         </div>
-        <div class="form-group">
+        <div class="form-group mb-2">
           <label for="">Post tags</label>
           <input value="<?php if (isset($post_tags)) {echo $post_tags;} ?>" type="text" class="form-control" name="post_tags">
         </div>
-        <?php  }
-        } ?>
     <div class="form-group">
         <input class="btn btn-primary" type="submit" name="update_post" value="Update Post">
     </div>
