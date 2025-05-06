@@ -1,4 +1,4 @@
-<form action="" method="post">
+<form action="" method="post" enctype="multipart/form-data">
         <?php
         if (isset($_GET['p_id'])) {
             $the_post_id = $_GET['p_id'];
@@ -19,34 +19,35 @@
             }
                 // <!-- Update Query -->
                 if (isset($_POST['update_post'])) {
-                  $the_post_title = $_POST['post_title'];
-                  $the_post_author = $_POST['post_author'];
-                  $the_post_category = $_POST['post_category_id'];
-                  // $the_post_image = $_FILES['image']['name'];
-                  // $post_image_temp = $_FILES['image']['tmp_name'];
-                  $the_post_content = $_POST['post_content']; 
+                  $post_title = $_POST['post_title'];
+                  $post_author = $_POST['post_author'];
+                  $post_category_id = $_POST['post_category_id'];
+                  $post_status = $_POST['post_status'];
+                  $post_image = $_FILES['image']['name'];
+                  $post_image_temp = $_FILES['image']['tmp_name'];
+                  $post_content = $_POST['post_content']; 
                   $post_tags = $_POST['post_tags'];
-                  // move_uploaded_file($post_image_temp, "../images/$the_post_image");
+                  move_uploaded_file($post_image_temp, "../images/$post_image");
       
-                  // if (empty($post_image)) {
-                  //     $query = "SELECT * from posts WHERE post_id = $the_post_id";
-                  //     $select_image = mysqli_query($conn, $query);
-                  //     while ($row = mysqli_fetch_array($select_image)) {
-                  //         $post_image = $row['post_image'];
-                  //     }
-                  // }
+                  if (empty($post_image)) {
+                      $query = "SELECT * from posts WHERE post_id = $the_post_id";
+                      $select_image = mysqli_query($conn, $query);
+                      while ($row = mysqli_fetch_array($select_image)) {
+                          $post_image = $row['post_image'];
+                      }
+                  }
       
       
-                  $query = "UPDATE posts SET";
-                  $query.= "post_title = '{$the_post_title}'";  
-                  $query.= "post_category_id = '{$the_post_category}'";
-                  // $query.= "post_date = now(), ";
-                  $query.= "post_author = '{$the_post_author}'";
-                  // $query.= "post_status = '{$post_status}'";
-                  // $query.= "post_tags = '{$post_tags}'";
-                  // $query.= "post_content = '{$the_post_content}'";
-                  // $query.= "post_image = '{$the_post_image}'";
-                  $query.= "WHERE post_id = '{$the_post_id}'";
+                  $query = "UPDATE posts SET ";
+                  $query.= "post_category_id = '{$post_category_id}', ";
+                  $query.= "post_title = '{$post_title}', ";
+                  $query.= "post_author = '{$post_author}', ";  
+                  $query.= "post_date = now(), ";
+                  $query.= "post_image = '{$post_image}', ";
+                  $query.= "post_content = '{$post_content}', ";
+                  $query.= "post_tags = '{$post_tags}', ";
+                  $query.= "post_status = '{$post_status}' ";
+                  $query.= "WHERE post_id = '{$the_post_id}' ";
       
                   $update_query = mysqli_query($conn, $query);
       
@@ -80,6 +81,19 @@
             echo "<option value='{$cat_id}'>{$cat_title}</option>";
            }
           ?>
+          </select>
+        </div>
+        <div>
+          <label for="">Post Status</label>
+          <select class="form-select" name="post_status" id="">
+            <option value='<?php echo $post_status; ?>'><?php echo $post_status; ?></option>
+            <?php
+            if ($post_status == 'published') {
+                echo "<option value='draft'>Draft</option>";
+            } else {
+                echo "<option value='published'>Publish</option>";
+            }
+            ?>
           </select>
         </div>
         <div class="form-group mb-2">

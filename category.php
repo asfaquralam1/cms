@@ -3,8 +3,13 @@
     <div class="row">
         <div class="col-md-8">
             <?php
+            if (isset($_GET['category'])) {
+                $post_category_id = $_GET['category'];
+            } else {
+                header("Location: index.php");
+            }
             // Fetch categories from the database
-            $query = "SELECT * FROM posts";
+            $query = "SELECT * FROM posts where post_category_id = $post_category_id ";
             $result = mysqli_query($conn, $query);
             if ($result) {
                 while ($row = mysqli_fetch_assoc($result)) {
@@ -26,7 +31,7 @@
             <hr>
             <img src="images/<?php echo $post_image ?>" class="img-responsive" alt="Responsive image">
             <hr>
-            <a class="btn btn-primary" href="">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <p><?php echo $post_content ?></p>
             <hr>
             <?php
                 }
@@ -34,10 +39,6 @@
                 echo "Error: " . mysqli_error($conn);
             }
             ?>
-            <ul class="pager">
-                <li class="previous"><a href="#">&larr; Older</a></li>
-                <li class="next"><a href="#">Newer &rarr;</a></li>
-            </ul>
         </div>
         <div class="col-md-4">
             <?php include 'includes/sidebar.php' ?>

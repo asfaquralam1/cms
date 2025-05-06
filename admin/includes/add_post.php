@@ -3,6 +3,8 @@ if (isset($_POST['create_post'])) {
     $post_title = $_POST['title'];
     $post_category_id = $_POST['post_category_id'];
     $post_author = $_POST['author'];
+    $post_status = $_POST['post_status'];
+    $post_date = date('d-m-y');
     $post_image = $_FILES['image']['name'];
     $post_image_temp = $_FILES['image']['tmp_name'];
     $post_tags = $_POST['post_tags'];
@@ -10,8 +12,8 @@ if (isset($_POST['create_post'])) {
 
     move_uploaded_file($post_image_temp, "../images/$post_image");
 
-    $query = "INSERT INTO posts(post_title, post_category_id, post_author, post_date, post_image, post_tags, post_content) ";
-    $query .= "VALUES('{$post_title}', '{$post_category_id}', '{$post_author}', now(), '{$post_image}', '{$post_tags}', '{$post_content}')";
+    $query = "INSERT INTO posts(post_title, post_category_id, post_author, post_date, post_image, post_tags, post_content, post_status) ";
+    $query .= "VALUES('{$post_title}', '{$post_category_id}', '{$post_author}', now(), '{$post_image}', '{$post_tags}', '{$post_content}', '{$post_status}')";
 
     $create_post_query = mysqli_query($conn, $query);
     if (!$create_post_query) {
@@ -26,13 +28,36 @@ if (isset($_POST['create_post'])) {
         <label for="title">Post Title</label>
         <input type="text" class="form-control" name="title">
     </div>
+    <div class="form-group mb-2">
+        <label for="">Post Author</label>
+        <input type="text" class="form-control" name="author">
+    </div>
+    <div class="form-group mb-2">
+          <label for="">Select Category</label>
+          <select class="form-select" name="post_category_id" id="">
+          <?php
+           $category_query = "SELECT * from categories";
+           $select_categories = mysqli_query($conn, $category_query);
+           confirmQuery($select_categories);
+           while($row = mysqli_fetch_assoc($select_categories)){
+            $cat_id = $row['cat_id'];
+            $cat_title = $row['cat_title'];
+            echo "<option value='{$cat_id}'>{$cat_title}</option>";
+           }
+          ?>
+          </select>
+        </div>
     <div class="form-group">
-        <label for="post_category">Post Category</label>
-        <input type="number" class="form-control" name="post_category_id">
+        <label for="post_status">Post Status</label><br>
+        <select name="post_status" id="" class="form-control">
+            <option value="draft">Select Options</option>
+            <option value="draft">Draft</option>
+            <option value="published">Published</option>
+        </select>
     </div>
     <div class="form-group">
-        <label for="post_category">Post Author</label>
-        <input type="text" class="form-control" name="author">
+        <label for="post_date">Post Date</label>
+        <input type="date" class="form-control" name="post_date">
     </div>
     <div class="form-group">
         <label for="post_image">Post Image</label><br>
