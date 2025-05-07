@@ -1,10 +1,5 @@
 <footer>
-  <div class="row">
-    <div class="col-lg-12">
-      <p>Copyright &copy; 2025. All rights reserved.</p>
-      <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
-    </div>
-  </div>
+  <p style="text-align: center;">Copyright &copy; 2025. All rights reserved. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
 </footer>
 
 </div>

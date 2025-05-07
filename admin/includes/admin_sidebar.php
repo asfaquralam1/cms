@@ -1,5 +1,5 @@
 <div class="sidebar">
-    <li><a href="#"><i class="fas fa-dashboard"></i>Dashboard</a></li>
+    <li><a href="./dashboard.php"><i class="fas fa-dashboard"></i>Dashboard</a></li>
     <li class="dropdown">
         <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fas fa-chart-simple"></i>Posts

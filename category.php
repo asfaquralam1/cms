@@ -1,7 +1,7 @@
 <?php include 'includes/header.php' ?>
 <div class="container mt-4">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-9">
             <?php
             if (isset($_GET['category'])) {
                 $post_category_id = $_GET['category'];
@@ -18,14 +18,14 @@
                     $post_author = $row['post_author'];
                     $post_date = $row['post_date'];
                     $post_image = $row['post_image'];
-                    $post_content = $row['post_content'];
+                    $post_content = substr($row['post_content'], 0, 50) . '...';
                
             ?>
             <h1 class="page-header">
                 Page Heading
                 <small style="font-size: 24px;">Secondery Text</small>
             </h1>
-            <h2><a href="post.php?p_id=<?php echo $post_id; ?>"><?php echo $post_title ?></a></h2>
+            <h2><a class="nav-link" href="post.php?p_id=<?php echo $post_id; ?>"><?php echo $post_title ?></a></h2>
             <p>by <a href=""></a><?php echo $post_author ?></p>
             <p><i class="fa-solid fa-clock"></i>  <?php echo $post_date ?></p>
             <hr>
@@ -40,7 +40,7 @@
             }
             ?>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <?php include 'includes/sidebar.php' ?>
         </div>
     </div>

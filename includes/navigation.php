@@ -1,7 +1,7 @@
 <?php include 'includes/connection.php' ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="index.php">CMS Front</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -16,7 +16,7 @@
                         $cat_title = $row['cat_title'];
                         $cat_id = $row['cat_id'];
                         echo "<li class='nav-item'>
-                                <a class='nav-link' href='#'>{$cat_title}</a>
+                                <a class='nav-link' href='category.php?category=$cat_id'>{$cat_title}</a>
                               </li>";
                     }
                 } else {

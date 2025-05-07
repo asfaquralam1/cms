@@ -102,7 +102,7 @@
         </div>
         <div class="form-group mb-2">
           <label for="">Post Content</label>
-          <input value="<?php if (isset($post_content)) {echo $post_content;} ?>" type="text" class="form-control" name="post_content">
+          <textarea class="form-control" name="post_content" cols="3" rows="5"><?php if (isset($post_content)) {echo $post_content;} ?></textarea>
         </div>
         <div class="form-group mb-2">
           <label for="">Post tags</label>
