@@ -33,14 +33,41 @@
                     <hr>
                     <p><?php echo $post_content ?></p>
                     <hr>
+
+                    <?php
+                    if(isset($_POST['create_comment'])) {
+                        $the_post_id = $_GET['p_id'];
+                        $comment_author = $_POST['comment_author'];
+                        $comment_email = $_POST['comment_email'];
+                        $comment_content = $_POST['comment_content'];
+
+                        if (!empty($comment_author) && !empty($comment_email) && !empty($comment_content)) {
+                            $query = "INSERT INTO comments (comment_post_id, comment_author, comment_email, comment_content, comment_status, comment_date) VALUES ($the_post_id, '$comment_author', '$comment_email', '$comment_content', 'unapproved', now())";
+                            $create_comment_query = mysqli_query($conn, $query);
+                            if (!$create_comment_query) {
+                                die('Query Failed' . mysqli_error($conn));
+                            }
+                        }
+                    }
+                    ?>
+                    <!-- // Comment Section -->
                     <div class="card my-4">
                         <div class="card-body" style="background-color: #f7f7f9 ;">
                              <h5>Leave a Comment:</h5>
-                            <form action="post.php?p_id=<?php echo $post_id; ?>" method="post">
+                            <form method="post">
                                 <div class="form-group">
-                                    <textarea class="form-control mb-2" name="comment_content" rows="3" placeholder="Your Comment" required></textarea>
+                                    <label for="">Author</label>
+                                    <input class="form-control" name="comment_author" placeholder="Your Name" required />
                                 </div>
-                                <button type="submit" name="submit_comment" class="btn btn-primary">Submit</button>
+                                <div class="form-group">
+                                    <label for="">Email</label>
+                                    <input type="email" class="form-control" name="comment_email" placeholder="Your Email" required />
+                                </div>
+                                <div class="form-group mb-2">
+                                    <label for="">Comment</label>
+                                    <textarea class="form-control" name="comment_content" rows="3" placeholder="Your Comment" required></textarea>
+                                </div>
+                                <button type="submit" name="create_comment" class="btn btn-primary">Submit</button>
                             </form>
                         </div>
                     </div>

@@ -11,5 +11,5 @@
         </ul>
     </li>
     <li><a href="./categories.php"><i class="fas fa-gear"></i>Categoris</a></li>
-    <li><a href="#"><i class="fas fa-file"></i>Commnets</a></li>
+    <li><a href="./comments.php"><i class="fas fa-file"></i>Commnets</a></li>
 </div>
