@@ -8,7 +8,7 @@
             <th>Status</th> 
             <th>Date</th>
             <th>Image</th>
-            <th>Content</th>
+            <th>Comments</th>
             <th>Tags</th>
             <th>Action</th>
         </tr>
@@ -28,6 +28,7 @@
                 $post_image = $row['post_image'];
                 $post_content = substr($row['post_content'], 0, 50) . '...';
                 $post_tags = $row['post_tags'];
+                $post_comment_count = $row['post_comment_count'];
                 $post_status = $row['post_status'];
                 echo "<tr>";
                 echo "<td>{$post_id}</td>";
@@ -44,7 +45,7 @@
                 echo "<td>{$post_status}</td>";
                 echo "<td>{$post_date}</td>";
                 echo "<td><img src='../images/{$post_image}' alt='Post Image' width='100'></td>";
-                echo "<td>{$post_content}</td>";
+                echo "<td>{$post_comment_count}</td>";
                 echo "<td>{$post_tags}</td>";
                 echo "<td><a href='posts.php?source=edit&p_id={$post_id}'>Edit</a> | <a href='posts.php?delete={$post_id}'>Delete</a></td>";
                 echo "</tr>";

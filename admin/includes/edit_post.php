@@ -83,15 +83,15 @@
           ?>
           </select>
         </div>
-        <div>
+        <div class="form-group mb-2">
           <label for="">Post Status</label>
           <select class="form-select" name="post_status" id="">
             <option value='<?php echo $post_status; ?>'><?php echo $post_status; ?></option>
             <?php
             if ($post_status == 'published') {
-                echo "<option value='draft'>Draft</option>";
+                echo "<option value='draft'>draft</option>";
             } else {
-                echo "<option value='published'>Publish</option>";
+                echo "<option value='published'>published</option>";
             }
             ?>
           </select>

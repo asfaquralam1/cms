@@ -9,6 +9,7 @@
             <th>In Response to</th>
             <th>Date</th>
             <th>Approved</th>
+            <th>Unpproved</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -40,17 +41,38 @@
                  $post_title = $row['post_title'];
                  echo "<td><a class='nav-link' href='./posts.php?p_id=$post_id'>{$post_title}</a></td>";
                 }
-                echo "<td>Some Title</td>";
                 echo "<td>{$comment_date}</td>";
-                echo "<td><a href='comments.php?source=edit_comment &p_id={$comment_id}'>Approve</a></td>";
-                echo "<td><a href='comments.php?source=edit_comment &p_id={$comment_id}'>Edit</a> | <a href='comments.php?delete={$comment_id}'>Delete</a></td>";
+                echo "<td><a href='comments.php?approved=$comment_id'>Approve</a></td>";
+                echo "<td><a href='comments.php?unapproved=$comment_id'>Unapprove</a></td>";
+                echo "<td><a href='comments.php?delete={$comment_id}'>Delete</a></td>";
                 echo "</tr>";
             }
         } else {
             echo "Error: " . mysqli_error($conn);
         }
-
-        deletePosts()
         ?>
     </tbody>
 </table>
+
+<?php
+if (isset($_GET['approved'])) {
+    $comment_id = $_GET['approved'];
+    $query = "UPDATE comments SET comment_status = 'approved' where comment_id = $comment_id";
+    $approved_comment_query = mysqli_query($conn, $query);
+    header("Location: comments.php");
+}
+
+if (isset($_GET['unapproved'])) {
+    $comment_id = $_GET['unapproved'];
+    $query = "UPDATE comments SET comment_status = 'unapproved'  where comment_id = $comment_id";
+    $approved_comment_query = mysqli_query($conn, $query);
+    header("Location: comments.php");
+}
+
+// Function to delete posts
+if (isset($_GET['delete'])) {
+    $comment_id = $_GET['delete'];
+    $query = "DELETE FROM comments WHERE comment_id = {$comment_id}";
+    $delete_query = mysqli_query($conn, $query);
+    header("Location: comments.php");
+}

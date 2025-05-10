@@ -1,7 +1,7 @@
 <?php include 'includes/header.php' ?>
 <div class="container mt-4">
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-9 mb-4">
             <?php
             if (isset($_GET['p_id'])) {
                 $the_post_id = $_GET['p_id'];
@@ -35,7 +35,7 @@
                     <hr>
 
                     <?php
-                    if(isset($_POST['create_comment'])) {
+                    if (isset($_POST['create_comment'])) {
                         $the_post_id = $_GET['p_id'];
                         $comment_author = $_POST['comment_author'];
                         $comment_email = $_POST['comment_email'];
@@ -48,12 +48,15 @@
                                 die('Query Failed' . mysqli_error($conn));
                             }
                         }
+
+                            $query = "UPDATE posts SET post_comment_count = post_comment_count + 1 WHERE post_id = $the_post_id";
+                            $update_comment_count = mysqli_query($conn, $query);
                     }
                     ?>
                     <!-- // Comment Section -->
                     <div class="card my-4">
                         <div class="card-body" style="background-color: #f7f7f9 ;">
-                             <h5>Leave a Comment:</h5>
+                            <h5>Leave a Comment:</h5>
                             <form method="post">
                                 <div class="form-group">
                                     <label for="">Author</label>
@@ -71,7 +74,33 @@
                             </form>
                         </div>
                     </div>
+                    <hr>
+                    <!-- Comments Section -->
+                    <?php
+                    $query = "SELECT * FROM comments WHERE comment_post_id = $the_post_id AND comment_status = 'approved' ORDER BY comment_id DESC";
+                    $select_comment_query = mysqli_query($conn, $query);
+                    if ($select_comment_query) {
+                        while ($row = mysqli_fetch_assoc($select_comment_query)) {
+                            $comment_date = $row['comment_date'];
+                            $comment_content = $row['comment_content'];
+                            $comment_author = $row['comment_author'];
+
+                    ?>
+                            <div class="media mb-4">
+                                <div class="media-body">
+                                    <h5 class="mt-0">
+                                        <?php echo $comment_content; ?>
+                                    </h5>
+                                    <p>
+                                        By <small class="text-muted"><?php echo $comment_author; ?> on <?php echo date("d M Y", strtotime($post_date)); ?> </small>
+                                    </p>
+                                </div>
+                            </div>
+
+
             <?php
+                        }
+                    }
                 }
             } else {
                 echo "Error: " . mysqli_error($conn);
