@@ -7,8 +7,8 @@
             <th>Lastname</th>
             <th>Email</th> 
             <th>Role</th>
-            <th>Date</th>
-            <th>Action</th>
+            <th>Image</th>
+            <th colspan="2">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -20,7 +20,6 @@
             while ($row = mysqli_fetch_assoc($result)) {
                 $user_id = $row['user_id'];
                 $username = $row['username'];
-                $user_password = $row['user_password'];
                 $user_firstname = $row['user_firstname'];
                 $user_lastname = $row['user_lastname'];;
                 $user_email = $row['user_email'];
@@ -32,8 +31,8 @@
                 echo "<td>{$user_firstname}</td>";
                 echo "<td>{$user_lastname}</td>";
                 echo "<td>{$user_email}</td>";
-                echo "<td>{$user_image}</td>";
                 echo "<td>{$user_role}</td>";
+                echo "<td>{$user_image}</td>";
                 echo "<td><a href='users.php?source=edit_user&p_id={$user_id}'>Edit</a></td>";
                 echo "<td><a href='users.php?delete={$user_id}'>Delete</a></td>";
                 echo "</tr>";
