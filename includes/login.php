@@ -1,4 +1,5 @@
 <?php include "./connection.php"; ?>
+<?php session_start() ?>
 <?php
 $username = $_POST['username'];
 $password = $_POST['password'];
@@ -25,6 +26,8 @@ if (mysqli_num_rows($login_query) == 0) {
     $_SESSION['user_firstname'] = $user_firstname;
     $_SESSION['user_lastname'] = $user_lastname;
     $_SESSION['user_role'] = $user_role;
+
+    echo $username;
 }
 
 if (isset($_SESSION['user_role'])) {
