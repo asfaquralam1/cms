@@ -8,7 +8,9 @@
             <th>Email</th> 
             <th>Role</th>
             <th>Image</th>
-            <th colspan="2">Action</th>
+            <th>Make Admin</th>
+            <th>Make Subscriber</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -33,8 +35,9 @@
                 echo "<td>{$user_email}</td>";
                 echo "<td>{$user_role}</td>";
                 echo "<td>{$user_image}</td>";
-                echo "<td><a href='users.php?source=edit_user&p_id={$user_id}'>Edit</a></td>";
-                echo "<td><a href='users.php?delete={$user_id}'>Delete</a></td>";
+                echo "<td><a class='nav-link text-center' href='users.php?admin=$user_id'>Admin</a></td>";
+                echo "<td><a class='nav-link text-center' href='users.php?subscriber=$user_id'>Subscriber</a></td>";
+                echo "<td><a href='users.php?source=edit_user&p_id={$user_id}'>Edit</a> | <a href='users.php?delete={$user_id}'>Delete</a></td>";
                 echo "</tr>";
             }
         } else {
@@ -45,24 +48,24 @@
 </table>
 
 <?php
-if (isset($_GET['approved'])) {
-    $comment_id = $_GET['approved'];
-    $query = "UPDATE comments SET comment_status = 'approved' where comment_id = $comment_id";
-    $approved_comment_query = mysqli_query($conn, $query);
-    header("Location: comments.php");
+if (isset($_GET['admin'])) {
+    $user_id = $_GET['admin'];
+    $query = "UPDATE users SET user_role = 'admin' where user_id = $user_id";
+    $admin_query = mysqli_query($conn, $query);
+    header("Location: users.php");
 }
 
-if (isset($_GET['unapproved'])) {
-    $comment_id = $_GET['unapproved'];
-    $query = "UPDATE comments SET comment_status = 'unapproved'  where comment_id = $comment_id";
-    $approved_comment_query = mysqli_query($conn, $query);
-    header("Location: comments.php");
+if (isset($_GET['subscriber'])) {
+    $user_id = $_GET['subscriber'];
+    $query = "UPDATE users SET user_role = 'subscriber'  where user_id = $user_id";
+    $subscriber_query = mysqli_query($conn, $query);
+    header("Location: users.php");
 }
 
 // Function to delete posts
 if (isset($_GET['delete'])) {
-    $comment_id = $_GET['delete'];
-    $query = "DELETE FROM comments WHERE comment_id = {$comment_id}";
+    $user_id = $_GET['delete'];
+    $query = "DELETE FROM users WHERE user_id = {$user_id}";
     $delete_query = mysqli_query($conn, $query);
-    header("Location: comments.php");
+    header("Location: users.php");
 }

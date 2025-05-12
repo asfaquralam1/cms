@@ -10,7 +10,7 @@
             <!-- Dashboard (col-8) -->
             <div class="col-lg-10 bg-light">
                 <h2>Dashboard</h2>
-                <p>Welcome to the dashboard! Here's your main content area.</p>
+                <p>Welcome to the admin <?php echo $_SESSION['username'] ?></p>
                 <!-- Add cards, charts, tables, etc. here -->
             </div>
         </div>
