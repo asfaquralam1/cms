@@ -17,7 +17,7 @@
                         <i class="fas fa-user"></i> Jhon Smith
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-user"></i> Profile</a></li>
+                        <li><a class="dropdown-item" href="../admin/profile.php"><i class="fas fa-user"></i> Profile</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="../includes/logout.php"><i class="fas fa-power-off"></i> Logout</a></li>
                     </ul>

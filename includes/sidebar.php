@@ -12,17 +12,17 @@
 <div class="well">
     <h4>Login</h4>
     <form action="includes/login.php" method="post">
-        <div class="form-group">
+        <div class="form-group mb-2">
             <label for="">Username</label>
             <input type="text" class="form-control" name="username" placeholder="Enter Username" id="">
         </div>
-        <div class="form-group">
+        <div class="form-group mb-2">
             <label for="">Password</label>
             <input type="password" class="form-control" name="password" placeholder="Enter Password" id="">
-            <span class="input-group-btn">
-                <button class="btn btn-primary" name="submit" type="submit">Submit</button>
-            </span>
         </div>
+        <span class="input-group-btn">
+            <button class="btn btn-primary" name="submit" type="submit">Submit</button>
+        </span>
     </form>
 </div>
 <?php
