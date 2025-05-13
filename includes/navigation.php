@@ -21,8 +21,11 @@
                     }
                 } else {
                     echo "Error: " . mysqli_error($conn);
-                } 
+                }
                 ?>
+                <li class='nav-item'>
+                    <a class='nav-link' href='./admin/index.php'>Admin</a>
+                </li>
             </ul>
         </div>
     </div>
