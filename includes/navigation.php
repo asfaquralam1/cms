@@ -26,6 +26,15 @@
                 <li class='nav-item'>
                     <a class='nav-link' href='./admin/index.php'>Admin</a>
                 </li>
+                <?php
+                if(isset($_SESSION['user_role'])){
+                    echo "hi";
+                    if(isset($_GET['p_id'])){
+                      $the_post_id =  $_GET['p_id'];
+                      echo "<li><a herf='admin/posts.php?source=edit_post&p_id={$the_post_id}'>Edit Post</a></li>";
+                    }
+                }
+                ?>
             </ul>
         </div>
     </div>

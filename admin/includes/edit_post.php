@@ -52,7 +52,9 @@
                   $update_query = mysqli_query($conn, $query);
       
                   confirmQuery($update_query);
-                  header("Location: posts.php");
+
+                  echo "<h4><a href='../post.php?p_id={$the_post_id}'>View Post</a></h4>";
+                  // header("Location: posts.php");
               }
 
         ?>
